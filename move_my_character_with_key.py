@@ -51,16 +51,10 @@ def handle_events():
 
 idle = True
 running = False
-x = 800 // 2
-y = 600 // 2
-frame = 0
-frame_idle = 0
-dir = 0
-dir_y = 0
-max_l = 0
-max_r = 800
-max_t = 600
-max_b = 0
+x, y = 800 // 2, 600 // 2
+frame, frame_idle = 0, 0
+dir, dir_y = 0, 0
+max_r, max_l, max_t, max_b = 800, 0, 600, 0
 
 while True:
     while running:
