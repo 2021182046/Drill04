@@ -58,25 +58,26 @@ frame_idle = 0
 dir = 0
 dir_y = 0
 
-while running:
-    clear_canvas()
-    tuk_ground.draw(800//2, 600//2)
-    run_character.clip_draw(frame*63, 0, 60, 70, x, y)
-    update_canvas()
-    handle_events()
-    frame = (frame+1) % 8
-    x += dir * 5
-    y += dir_y * 5
-    delay(0.05)
+while True:
+    while running:
+        clear_canvas()
+        tuk_ground.draw(800//2, 600//2)
+        run_character.clip_draw(frame*63, 0, 60, 70, x, y)
+        update_canvas()
+        handle_events()
+        frame = (frame+1) % 8
+        x += dir * 5
+        y += dir_y * 5
+        delay(0.05)
 
-while idle:
-    clear_canvas()
-    tuk_ground.draw(800//2, 600//2)
-    idle_character.clip_draw(frame_idle*46, 0, 50, 50, x, y)
-    update_canvas()
-    handle_events()
-    frame_idle = (frame_idle+1) % 10
-    delay(0.05)
+    while idle:
+        clear_canvas()
+        tuk_ground.draw(800//2, 600//2)
+        idle_character.clip_draw(frame_idle*46, 0, 50, 50, x, y)
+        update_canvas()
+        handle_events()
+        frame_idle = (frame_idle+1) % 10
+        delay(0.05)
 
 
 close_canvas()
