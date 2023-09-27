@@ -2,6 +2,7 @@ from pico2d import *
 
 open_canvas()
 run_character = load_image('robot_run.png')
+idle_character = load_image('robot_idle.png')
 tuk_ground = load_image('TUK_GROUND.png')
 
 def handle_events():
@@ -32,10 +33,12 @@ def handle_events():
             elif event.key == SDLK_DOWN:
                 dir_y += 1
 
-running = True
+idle = True
+running = False
 x = 800 // 2
 y = 600 // 2
 frame = 0
+frame_idle = 0
 dir = 0
 dir_y = 0
 
@@ -48,6 +51,15 @@ while running:
     frame = (frame+1) % 8
     x += dir * 5
     y += dir_y * 5
+    delay(0.05)
+
+while idle:
+    clear_canvas()
+    tuk_ground.draw(800//2, 600//2)
+    idle_character.clip_draw(frame_idle*46, 0, 50, 50, x, y)
+    update_canvas()
+    handle_events()
+    frame_idle = (frame_idle+1) % 10
     delay(0.05)
 
 
