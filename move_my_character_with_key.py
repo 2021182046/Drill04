@@ -6,7 +6,7 @@ idle_character = load_image('robot_idle.png')
 tuk_ground = load_image('TUK_GROUND.png')
 
 def handle_events():
-    global running, dir, dir_y
+    global running, dir, dir_y, idle
 
     events = get_events()
     for event in events:
@@ -14,23 +14,39 @@ def handle_events():
             running = False
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_RIGHT:
+                running = True
+                idle = False
                 dir += 1
             elif event.key == SDLK_LEFT:
+                running = True
+                idle = False
                 dir -= 1
             elif event.key == SDLK_UP:
+                running = True
+                idle = False
                 dir_y += 1
             elif event.key == SDLK_DOWN:
+                running = True
+                idle = False
                 dir_y -= 1
             elif event.key == SDLK_ESCAPE:
                 running = False
         elif event.type == SDL_KEYUP:
             if event.key == SDLK_RIGHT:
+                running = False
+                idle = True
                 dir -= 1
             elif event.key == SDLK_LEFT:
+                running = False
+                idle = True
                 dir += 1
             elif event.key == SDLK_UP:
+                running = False
+                idle = True
                 dir_y -= 1
             elif event.key == SDLK_DOWN:
+                running = False
+                idle = True
                 dir_y += 1
 
 idle = True
