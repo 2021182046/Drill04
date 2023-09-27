@@ -57,6 +57,10 @@ frame = 0
 frame_idle = 0
 dir = 0
 dir_y = 0
+max_l = 0
+max_r = 800
+max_t = 600
+max_b = 0
 
 while True:
     while running:
@@ -70,6 +74,15 @@ while True:
         y += dir_y * 5
         delay(0.05)
 
+        if x < max_l:
+            x = max_l
+        elif x > max_r:
+            x = max_r
+        if y < max_b:
+            y = max_b
+        elif y > max_t:
+            y = max_t
+
     while idle:
         clear_canvas()
         tuk_ground.draw(800//2, 600//2)
@@ -78,6 +91,5 @@ while True:
         handle_events()
         frame_idle = (frame_idle+1) % 10
         delay(0.05)
-
 
 close_canvas()
