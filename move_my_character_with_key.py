@@ -2,6 +2,7 @@ from pico2d import *
 
 open_canvas()
 run_character = load_image('robot_run.png')
+tuk_ground = load_image('TUK_GROUND.png')
 
 def handle_events():
     global running, dir
@@ -31,6 +32,7 @@ dir = 0
 
 while running:
     clear_canvas()
+    tuk_ground.draw(800//2, 600//2)
     run_character.clip_draw(frame*63, 0, 60, 70, x, y)
     update_canvas()
     handle_events()
